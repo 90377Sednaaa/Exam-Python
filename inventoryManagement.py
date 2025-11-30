@@ -1,5 +1,6 @@
 from product import Product
 
+# Storage for the products
 products = []
 
 
@@ -19,7 +20,7 @@ def updateQuantity():
 
     for product in products:
         if product.getName() == name:
-            new_quantity = int(input("Enter New Quantity:"))
+            new_quantity = int(input("Enter New Quantity: "))
             product.setQuantity(new_quantity)
             print(
                 f"Quantity for '{product.getName()}' updated to {new_quantity}.")
@@ -28,17 +29,17 @@ def updateQuantity():
 
 
 def displayInventory():
+
     if not products:
         print("No products in inventory.")
         return
 
     print("\nCurrent Inventory:")
-    print(f"{'name':<15}{'price':<15}{'quantity':<15}{'total_value':<15}")
+    print(f"{'Name':<25}{'Price':<25}{'Quantity':<25}{'Total Value':<25}")
 
     for product in products:
         total_value = product.calculateTotalValue()
-        print(f"{product.getName():<15}{product.getPrice():<15}{product.getQuantity():<15}{total_value:<15}")
-
+        print(f"{product.getName():<25}{product.getPrice():<25}{product.getQuantity():<25}${total_value:<25.2f}")
         overall_value = product.calculate_total_inventory_value(products)
 
-    print(f"\nOverall Inventory Value: {overall_value}")
+    print(f"\nOverall Inventory Value: ${overall_value:.2f}")
